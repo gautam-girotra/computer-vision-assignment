@@ -1,15 +1,39 @@
-We need two main things for video tagging. 
-1. CNN for image recognition
-2. Metadata of video 
+Methodology:
+We will use both frame data and metadata for this.
 
-Feasibility: Yes, Automatic Video tagging is feasible.It can be done using industrial resources like Cloud Video Intelligence API.At a smaller level,if good computation power is available, it can be implemented on local machine by creating custom CNN. We can feed small parts of video to the CNN for low memory usage. 
+LSTM IMPLEMENTATION
+1. Get labelled dataset.
+2. Split into train and test set(in 80:20 ratio).
+3. For each video, generate its embeddings using an LSTM based network.
+4. Frames of videos in fixed time intervals will be given as input.
+5. Once embedding is generated a multilayer perceptron can be trained on these
+embeddings.
+6. Output of this network will be a softmax layer giving probabilities of each tag.
 
-Methodology: 1.Dataset accquirement 
-	     2.vocabulary building for tags
-	     3.dataset split into train, test and validation
-	     4.multi input model to process both video and metadata
-	     5.splitting videos into frames at a set time interval(say 3 seconds)
-	     6.tagging these frames and returning the top 5 tags for the whole video.
-Manual tagging can be done for higher accuracy as in we can make it an online system so that whenever creator uploads a video automatic tagging is done. The creator can edit the tags and the model can learn from those tags.
+FOR CNN IMPLEMENTATION
+1. Get labelled dataset.
+2. Split into train and test set(in 80:20 ratio).
+3. Frames of videos in fixed time intervals will be given as input to CNN.
+4. Output of this network will be a softmax layer giving probabilities of each tag
 
-Challenges: Human bias, tags should be in multiple languages,incorrect data splitting may cause biased model, memory usage.
+USING METADATA
+1. NLP techniques can be used for the metadata.
+2. If videos are from social media platforms, people often write something to describe the
+video or add tags.
+3. These texts should be embedded first either using tfidf vectorizer or word to vec
+vectorizer.
+4. After this a simple classification algorithm like lightgbm would give good results.
+We will get two scores corresponsing to a tag for each video. A threshold score can decide
+whether to accept the tag.
+
+Challenges:
+1. Getting a good amount of labelled data.
+2. Tags should be in multiple languages.
+2. Building a LSTM based network and then the multilayer perceptron is time consuming.
+3. Memory requirements for training the network might be high.
+
+Feasibility:
+Yes, Automatic Video tagging is feasible.It can be done using industrial resources like Cloud Video Intelligence API.At a smaller level,
+provided a decent GPU machine the above solution is feasible. Transfer learning can be used
+to save time and memory. Using transfer learning we can select a few networks, initialize them
+with already trained weights and fine tune our network for our need.
