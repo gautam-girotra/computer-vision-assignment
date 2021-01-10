@@ -2,7 +2,7 @@ We need two main things for video tagging.
 1. CNN for image recognition
 2. Metadata of video 
 
-Feasibility: Yes, Automatic Video tagging is feasible.It can be done using industrial resources like Cloud Video Intelligence API.At a smaller level, We can feed small parts of video to the CNN for low memory usage. 
+Feasibility: Yes, Automatic Video tagging is feasible.It can be done using industrial resources like Cloud Video Intelligence API.At a smaller level,if good computation power is available, it can be implemented on local machine by creating custom CNN. We can feed small parts of video to the CNN for low memory usage. 
 
 Methodology: 1.Dataset accquirement 
 	     2.vocabulary building for tags
