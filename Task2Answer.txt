@@ -1,0 +1,15 @@
+We need two main things for video tagging. 
+1. CNN for image recognition
+2. Metadata of video 
+
+Feasibility: Yes, Automatic Video tagging is feasible.It can be done using industrial resources like Cloud Video Intelligence API.At a smaller level, We can feed small parts of video to the CNN for low memory usage. 
+
+Methodology: 1.Dataset accquirement 
+	     2.vocabulary building for tags
+	     3.dataset split into train, test and validation
+	     4.multi input model to process both video and metadata
+	     5.splitting videos into frames at a set time interval(say 3 seconds)
+	     6.tagging these frames and returning the top 5 tags for the whole video.
+Manual tagging can be done for higher accuracy as in we can make it an online system so that whenever creator uploads a video automatic tagging is done. The creator can edit the tags and the model can learn from those tags.
+
+Challenges: Human bias, tags should be in multiple languages,incorrect data splitting may cause biased model, memory usage.
